@@ -3,9 +3,6 @@ package com.bridgelabz;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
-
 public class UserValidatorTest {
     UserValidator userValidator = new UserValidator();
 
@@ -33,7 +30,7 @@ public class UserValidatorTest {
     }
     @Test
     public void givenPassword_whenProper_shouldReturnTrue() {
-        boolean result = userValidator.validatePassword("gaganreddy");
+        boolean result = userValidator.validatePassword("gaganred");
         Assert.assertEquals(result, true);
     }
 
