@@ -3,6 +3,9 @@ package com.bridgelabz;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+
 public class UserValidatorTest {
     UserValidator userValidator = new UserValidator();
 
@@ -25,7 +28,13 @@ public class UserValidatorTest {
     }
     @Test
     public void givenMobileNumber_whenProper_shouldReturnTrue() {
-        boolean result = userValidator.validateEmail("+91 5842484762");
+        boolean result = userValidator.validateMobileNumber("+91 8722289619");
         Assert.assertEquals(result, true);
     }
+    @Test
+    public void givenPassword_whenProper_shouldReturnTrue() {
+        boolean result = userValidator.validatePassword("gaganreddy");
+        Assert.assertEquals(result, true);
+    }
+
 }
