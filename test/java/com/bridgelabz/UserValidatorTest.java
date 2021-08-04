@@ -26,7 +26,7 @@ public class UserValidatorTest {
     }
     @Test
     public void givenMobileNumber_whenProper_shouldReturnTrue() {
-        boolean result = userValidator.validateMobileNumber("+91-8722289617");
+        boolean result = userValidator.validateMobileNumber("+91-8722289619");
         Assert.assertEquals(true,result);
     }
     @Test
