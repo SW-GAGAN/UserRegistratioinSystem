@@ -40,7 +40,7 @@ public class EmailValidationTest {
     }
 
     @Test
-    public void testEmailValidation() {
+    public void testEmailValidation() throws InvalidUserDetails {
         System.out.println("expected result for email is " + expectedResult);
         Assertions.assertEquals(expectedResult, registerdEmail.validateEmail(email));
 
