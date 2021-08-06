@@ -159,4 +159,3 @@ public class UserValidator {
                     InvalidUserDetails.ExceptionType.enterEmpty, "Please give some input");
         }
     }
-}
