@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 
 /* @Description- user enter first name and last name using regex condition.
  * first latter must be start with cap letter.
+ * Added mobile number with country code.
+ *
  */
 public class UserValidator {
     Scanner scanner = new Scanner(System.in);
@@ -20,24 +22,35 @@ public class UserValidator {
         firstName = scanner.nextLine();
         return firstName;
     }
+
+    public boolean validateName(String firstName) {
+/*
+        boolean check=Pattern.matches("^[A-Z a-z]{3,25}$",firstName);
+        return check;
+      */
+        Pattern pattern = Pattern.compile("[A-Z]{1}[a-z]{2}+");
+        Matcher matcher = pattern.matcher(firstName);
+        boolean matches = matcher.find();
+
+      if (matches)
+            System.out.println("your name is valid");
+        else
+
+            System.out.println("invalid name");
+        return matches;
+
+
+    }
+
     public String getLastName() {
         System.out.println("enter your last name");
         lastName = scanner.nextLine();
         return lastName;
     }
-    public boolean validateFirstName(String name) {
-        Pattern pattern = Pattern.compile("[A-Z]{1}[a-z]{2}+");
-        Matcher matcher = pattern.matcher(name);
-        boolean matches = matcher.find();
-        if (matches)
-            System.out.println("your name is valid");
-        else
-            System.out.println("invalid name");
-        return matches;
-    }
+
     /* @Description User enter a valid last name.
      */
-    public boolean validateLastName(String lastName) {
+    public boolean validateLName(String lastName) {
         Pattern pattern = Pattern.compile("[A-Z]{1}[a-z]{2}+");
         Matcher matcher = pattern.matcher(lastName);
         boolean matches = matcher.find();
@@ -47,6 +60,7 @@ public class UserValidator {
             System.out.println("invalid name");
         return matches;
     }
+
     /* @Description take a email id by user and return emailid.
      */
     public String getEmailId() {
@@ -54,6 +68,7 @@ public class UserValidator {
         emailId = scanner.next();
         return emailId;
     }
+
     /*
        @Discription in this we are validate the condition for user.
        if user enter the currect email id and followed by the regex condition
@@ -65,12 +80,13 @@ public class UserValidator {
                 Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(emailId);
         boolean matches = matcher.find();
-        if(matches)
+        if (matches)
             System.out.println("Email id is valid");
         else
             System.out.println("Email id is not  valid");
         return matches;
     }
+
     /*
       user need to enter mobile number and must follow the condition.
      */
@@ -80,11 +96,12 @@ public class UserValidator {
         mobileNumber = scanner.nextLine();
         return mobileNumber;
     }
+
     /* @Description
     this is the condition for user if the user follow the condition
     the valid mobile number other wise invalid mobile number.
      */
-    public boolean validateMobileNumber(String mobileNumber) {
+    public boolean validateNumber(String mobileNumber) {
         Pattern pattern = Pattern.compile("^((\\+)?(\\d{2}[-]))?(\\d{10}){1}?$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(mobileNumber);
         boolean matches = matcher.find();
@@ -95,6 +112,7 @@ public class UserValidator {
 
         return matches;
     }
+
     /*@Description:- take password from user
      */
     public String getPassword() {
@@ -105,11 +123,11 @@ public class UserValidator {
 
     /*@Description:- password must be of length at least 8 characters or more.
     password contain at least one upper case.
-    passeord conitan atleast one numeric number.
+    password contains at least one numeric number.
     * */
-    public boolean validatePassword(String password) {
+    public boolean validatePass(String password) {
 
-        Pattern pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])((?=.+[!$%^&*(),.:@#^]){1}).{8,}$",Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])((?=.+[!$%^&*(),.:@#^]){1}).{8,}$", Pattern.CASE_INSENSITIVE);
 
         Matcher matcher = pattern.matcher(password);
         boolean matches = matcher.find();
@@ -118,22 +136,6 @@ public class UserValidator {
         else
             System.out.println("Invalid password");
         return matches;
-
-    }
-
-    public static void main(String[] args) {
-        UserValidator userValidator = new UserValidator();
-        String firstName = userValidator.getFirstName();
-        userValidator.validateFirstName(firstName);
-        String lastName = userValidator.getLastName();
-        userValidator.validateLastName(lastName);
-        String emaiId = userValidator.getEmailId();
-        userValidator.validateEmail(emaiId);
-        String mobileNumber = userValidator.getMobileNumber();
-        userValidator.validateMobileNumber(mobileNumber);
-        String password = userValidator.getPassword();
-        userValidator.validatePassword(password);
-
 
     }
 }
